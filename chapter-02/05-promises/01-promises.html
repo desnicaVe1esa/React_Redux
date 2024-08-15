@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Promises</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Promises</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+    const getFakeMembers = count => new Promise((resolves, rejects) => {
+        const api = `https://api.randomuser.me/?nat=US&results=${count}`
+        const request = new XMLHttpRequest()
+        request.open('GET', api)
+        request.onload = () =>
+            (request.status === 200) ?
+                resolves(JSON.parse(request.response).results) :
+                rejects(Error(request.statusText))
+        request.onerror = (err) => rejects(err)
+        request.send()
+    })
+
+    getFakeMembers(5).then(
+        members => console.log(members),
+        err => console.error(
+            new Error("cannot load members from randomuser.me"))
+    )
+
+    /*
+        [
+            {
+                "gender": "female",
+                "name": {
+                    "title": "Ms",
+                    "first": "Deann",
+                    "last": "Hernandez"
+                },
+                "location": {
+                    "street": {
+                        "number": 965,
+                        "name": "Lakeshore Rd"
+                    },
+                    "city": "Woodbridge",
+                    "state": "Idaho",
+                    "country": "United States",
+                    "postcode": 49901,
+                    "coordinates": {
+                        "latitude": "-57.6249",
+                        "longitude": "70.2911"
+                    },
+                    "timezone": {
+                        "offset": "+3:30",
+                        "description": "Tehran"
+                    }
+                },
+                "email": "deann.hernandez@example.com",
+                "login": {
+                    "uuid": "36c916f3-7380-4b24-b127-379070087b7f",
+                    "username": "lazyelephant540",
+                    "password": "brutus",
+                    "salt": "oFdTktTf",
+                    "md5": "41a41a7e563d1d1906ef1e25ac6c6007",
+                    "sha1": "b4e20f3358d69bfe1c91b7cdd40c13fb8746ca44",
+                    "sha256": "a5e67892814ad59b9873a6a77d221d5a64a3718664823634c5c0eefabd6d5abf"
+                },
+                "dob": {
+                    "date": "1979-07-29T11:16:36.014Z",
+                    "age": 45
+                },
+                "registered": {
+                    "date": "2002-11-24T00:11:03.364Z",
+                    "age": 21
+                },
+                "phone": "(205) 574-9754",
+                "cell": "(880) 341-4935",
+                "id": {
+                    "name": "SSN",
+                    "value": "125-23-0522"
+                },
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/women/48.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/women/48.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/women/48.jpg"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "Mr",
+                    "first": "Brian",
+                    "last": "Holt"
+                },
+                "location": {
+                    "street": {
+                        "number": 8428,
+                        "name": "Brown Terrace"
+                    },
+                    "city": "Stockton",
+                    "state": "Louisiana",
+                    "country": "United States",
+                    "postcode": 78445,
+                    "coordinates": {
+                        "latitude": "42.7981",
+                        "longitude": "8.1196"
+                    },
+                    "timezone": {
+                        "offset": "-2:00",
+                        "description": "Mid-Atlantic"
+                    }
+                },
+                "email": "brian.holt@example.com",
+                "login": {
+                    "uuid": "7dd13727-f492-4393-9093-344165d0d5cf",
+                    "username": "bluepanda531",
+                    "password": "rockies",
+                    "salt": "0l8Xzddi",
+                    "md5": "43afe8f48ce51e37d3dedf6587b7a7bd",
+                    "sha1": "8b2fca102e4e15c53dc834516e216ad3e151bcf8",
+                    "sha256": "f3b1517e6d1a937958eaebbbc1d2b509baebce2a789be5f435e1142e623e965e"
+                },
+                "dob": {
+                    "date": "1960-10-28T13:07:15.678Z",
+                    "age": 63
+                },
+                "registered": {
+                    "date": "2015-09-28T16:15:43.417Z",
+                    "age": 8
+                },
+                "phone": "(732) 796-4534",
+                "cell": "(301) 271-8379",
+                "id": {
+                    "name": "SSN",
+                    "value": "094-46-8749"
+                },
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/men/18.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/men/18.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/18.jpg"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "Mrs",
+                    "first": "Brooklyn",
+                    "last": "Cooper"
+                },
+                "location": {
+                    "street": {
+                        "number": 7421,
+                        "name": "Dane St"
+                    },
+                    "city": "Lousville",
+                    "state": "New Mexico",
+                    "country": "United States",
+                    "postcode": 21326,
+                    "coordinates": {
+                        "latitude": "-57.2618",
+                        "longitude": "163.3629"
+                    },
+                    "timezone": {
+                        "offset": "-3:30",
+                        "description": "Newfoundland"
+                    }
+                },
+                "email": "brooklyn.cooper@example.com",
+                "login": {
+                    "uuid": "c6002c3b-74a2-4b54-af97-8673020b2d5b",
+                    "username": "happywolf831",
+                    "password": "queenie",
+                    "salt": "aoV0shHK",
+                    "md5": "05de3879f5820f42ae393a6c99f3f4e3",
+                    "sha1": "e686ba7ae031f0de2b13754ce209156e0aafdf49",
+                    "sha256": "15199f801ec9224039239f1660e3da303b05431013f60f9bbabfbba032ddba78"
+                },
+                "dob": {
+                    "date": "1978-07-17T11:26:30.922Z",
+                    "age": 46
+                },
+                "registered": {
+                    "date": "2014-04-20T02:00:46.156Z",
+                    "age": 10
+                },
+                "phone": "(695) 618-6386",
+                "cell": "(318) 916-6876",
+                "id": {
+                    "name": "SSN",
+                    "value": "216-50-4992"
+                },
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/women/11.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/women/11.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/women/11.jpg"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "female",
+                "name": {
+                    "title": "Miss",
+                    "first": "Tammy",
+                    "last": "Long"
+                },
+                "location": {
+                    "street": {
+                        "number": 6607,
+                        "name": "Spring St"
+                    },
+                    "city": "Memphis",
+                    "state": "Colorado",
+                    "country": "United States",
+                    "postcode": 15057,
+                    "coordinates": {
+                        "latitude": "85.7327",
+                        "longitude": "-170.4821"
+                    },
+                    "timezone": {
+                        "offset": "+9:00",
+                        "description": "Tokyo, Seoul, Osaka, Sapporo, Yakutsk"
+                    }
+                },
+                "email": "tammy.long@example.com",
+                "login": {
+                    "uuid": "e779db7f-c822-495b-a892-03cf4189b6fd",
+                    "username": "organicduck286",
+                    "password": "usnavy",
+                    "salt": "YHjOwHRN",
+                    "md5": "e614e6bb470333f42ccae0beb0848054",
+                    "sha1": "67ada8451c90047bf6f85cbe741bf15e7e4631ef",
+                    "sha256": "9c573f4615fad20c03170bdedc8404b560df85f22070b7c25c65761acc257048"
+                },
+                "dob": {
+                    "date": "1981-07-08T02:54:40.348Z",
+                    "age": 43
+                },
+                "registered": {
+                    "date": "2018-06-24T22:29:27.189Z",
+                    "age": 6
+                },
+                "phone": "(890) 235-4775",
+                "cell": "(345) 237-0859",
+                "id": {
+                    "name": "SSN",
+                    "value": "860-18-7520"
+                },
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/women/28.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/women/28.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/women/28.jpg"
+                },
+                "nat": "US"
+            },
+            {
+                "gender": "male",
+                "name": {
+                    "title": "Mr",
+                    "first": "Lee",
+                    "last": "Berry"
+                },
+                "location": {
+                    "street": {
+                        "number": 7484,
+                        "name": "Fincher Rd"
+                    },
+                    "city": "Wilmington",
+                    "state": "Minnesota",
+                    "country": "United States",
+                    "postcode": 40958,
+                    "coordinates": {
+                        "latitude": "17.4844",
+                        "longitude": "35.5914"
+                    },
+                    "timezone": {
+                        "offset": "+6:00",
+                        "description": "Almaty, Dhaka, Colombo"
+                    }
+                },
+                "email": "lee.berry@example.com",
+                "login": {
+                    "uuid": "18f892da-5da2-42df-b9ac-ca31a906fe43",
+                    "username": "organicmouse417",
+                    "password": "hawk",
+                    "salt": "6V6D4vbX",
+                    "md5": "5fa89224b85d9e97171b60c86ef25a16",
+                    "sha1": "7c06111e63613110d4c96cc199711ad09ae49ad0",
+                    "sha256": "98fb527cd8defc2dece5e465df7cabd12d75a8ce57cd1060a445f8978ef0a47e"
+                },
+                "dob": {
+                    "date": "1946-03-02T03:53:36.353Z",
+                    "age": 78
+                },
+                "registered": {
+                    "date": "2012-06-08T20:53:37.125Z",
+                    "age": 12
+                },
+                "phone": "(782) 438-7281",
+                "cell": "(966) 546-9875",
+                "id": {
+                    "name": "SSN",
+                    "value": "404-62-6154"
+                },
+                "picture": {
+                    "large": "https://randomuser.me/api/portraits/men/29.jpg",
+                    "medium": "https://randomuser.me/api/portraits/med/men/29.jpg",
+                    "thumbnail": "https://randomuser.me/api/portraits/thumb/men/29.jpg"
+                },
+                "nat": "US"
+            }
+        ]
+     */
+
+</script>
+</body>
+</html>
