@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="minimum-scale=1.0, width=device-width, maximum-scale=1.0, user-scalable=no"/>
+    <meta charset="utf-8">
+    <title>Promises with fetch</title>
+    <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+</head>
+<body>
+<h1>Promises with fetch</h1>
+<p>Open the console</p>
+<script type="text/babel">
+
+    fetch("https://api.randomuser.me/?nat=US&results=10")
+        .then(response => response.json())
+        .then(members => console.log(members))
+        .catch(err => console.error(err))
+    /*
+        {
+            "results": [
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Lloyd",
+                        "last": "Riley"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 1195,
+                            "name": "James St"
+                        },
+                        "city": "Flowermound",
+                        "state": "New Mexico",
+                        "country": "United States",
+                        "postcode": 79610,
+                        "coordinates": {
+                            "latitude": "65.7815",
+                            "longitude": "-38.2414"
+                        },
+                        "timezone": {
+                            "offset": "-3:00",
+                            "description": "Brazil, Buenos Aires, Georgetown"
+                        }
+                    },
+                    "email": "lloyd.riley@example.com",
+                    "login": {
+                        "uuid": "ac51659c-9b3f-4cfc-9c90-90b38c44c2a5",
+                        "username": "purplebear632",
+                        "password": "satan666",
+                        "salt": "MRo0W0X1",
+                        "md5": "5b9a4a7332f4fdf39623c628f5ba4ddd",
+                        "sha1": "1816a4dde508ec84b0afbfd6472a4d49dc7354e4",
+                        "sha256": "13984bed1ae527fd5aca453dfb03fea49709893cc9c753e92ecd38cc5eefebe5"
+                    },
+                    "dob": {
+                        "date": "1945-03-16T04:25:24.787Z",
+                        "age": 79
+                    },
+                    "registered": {
+                        "date": "2016-04-08T14:31:58.127Z",
+                        "age": 8
+                    },
+                    "phone": "(672) 471-6386",
+                    "cell": "(872) 775-2978",
+                    "id": {
+                        "name": "SSN",
+                        "value": "164-28-7830"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/21.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/21.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/21.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "female",
+                    "name": {
+                        "title": "Mrs",
+                        "first": "Abigail",
+                        "last": "Hayes"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 3644,
+                            "name": "Spring Hill Rd"
+                        },
+                        "city": "Louisville",
+                        "state": "Illinois",
+                        "country": "United States",
+                        "postcode": 68462,
+                        "coordinates": {
+                            "latitude": "66.1164",
+                            "longitude": "38.0285"
+                        },
+                        "timezone": {
+                            "offset": "+5:30",
+                            "description": "Bombay, Calcutta, Madras, New Delhi"
+                        }
+                    },
+                    "email": "abigail.hayes@example.com",
+                    "login": {
+                        "uuid": "dc4ab94f-be2a-474d-be40-2f06ab5c83a4",
+                        "username": "goldenelephant297",
+                        "password": "scout",
+                        "salt": "qnKlHFT6",
+                        "md5": "04195fb120a7ea25c260d482f29594cc",
+                        "sha1": "ddf1de2030637bc6e820e121ba9936b78dcdd877",
+                        "sha256": "d7b8e1d77ba4d55e165be609aeb9d964efc66adc77ed219281f0c5290176de59"
+                    },
+                    "dob": {
+                        "date": "1984-10-15T16:42:45.163Z",
+                        "age": 39
+                    },
+                    "registered": {
+                        "date": "2015-08-07T18:11:55.713Z",
+                        "age": 9
+                    },
+                    "phone": "(997) 978-8235",
+                    "cell": "(712) 477-3984",
+                    "id": {
+                        "name": "SSN",
+                        "value": "081-62-1160"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/women/2.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/women/2.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/2.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Devon",
+                        "last": "Rice"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 718,
+                            "name": "Shady Ln Dr"
+                        },
+                        "city": "Miami",
+                        "state": "Arkansas",
+                        "country": "United States",
+                        "postcode": 15193,
+                        "coordinates": {
+                            "latitude": "-49.6693",
+                            "longitude": "32.1982"
+                        },
+                        "timezone": {
+                            "offset": "-1:00",
+                            "description": "Azores, Cape Verde Islands"
+                        }
+                    },
+                    "email": "devon.rice@example.com",
+                    "login": {
+                        "uuid": "288bec53-3ba0-4eeb-acdd-459b345bc4fe",
+                        "username": "blueswan991",
+                        "password": "lorraine",
+                        "salt": "JYq1eXOj",
+                        "md5": "fec318baaae9b79e8cb83816fbee7c16",
+                        "sha1": "2e90b12280484d1d5b1c185428797c6a07b95540",
+                        "sha256": "48beee0356e498efad6d38dcb09f7705a3a20dcf720f8619963df00671caf446"
+                    },
+                    "dob": {
+                        "date": "1960-12-19T01:37:14.151Z",
+                        "age": 63
+                    },
+                    "registered": {
+                        "date": "2003-09-24T23:51:24.128Z",
+                        "age": 20
+                    },
+                    "phone": "(323) 449-3686",
+                    "cell": "(727) 623-6383",
+                    "id": {
+                        "name": "SSN",
+                        "value": "539-19-2394"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/97.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/97.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/97.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "female",
+                    "name": {
+                        "title": "Mrs",
+                        "first": "Ava",
+                        "last": "Lee"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 3483,
+                            "name": "W Sherman Dr"
+                        },
+                        "city": "West Valley City",
+                        "state": "South Dakota",
+                        "country": "United States",
+                        "postcode": 79586,
+                        "coordinates": {
+                            "latitude": "-12.9029",
+                            "longitude": "-168.6400"
+                        },
+                        "timezone": {
+                            "offset": "+4:30",
+                            "description": "Kabul"
+                        }
+                    },
+                    "email": "ava.lee@example.com",
+                    "login": {
+                        "uuid": "d2a321a1-d24c-461b-8109-c4d1ca283df4",
+                        "username": "organickoala556",
+                        "password": "robotics",
+                        "salt": "BvU0ZnZx",
+                        "md5": "be717d0d44d7c1b0c507807297113847",
+                        "sha1": "bb3dd25f9f9fcf7d37f4273f23ccaec7de7375da",
+                        "sha256": "3e383026b17786e00882c9f8991b5c5e230abac1531b0990da9b940a4e568aa1"
+                    },
+                    "dob": {
+                        "date": "1990-12-10T08:56:10.841Z",
+                        "age": 33
+                    },
+                    "registered": {
+                        "date": "2017-12-14T00:16:30.666Z",
+                        "age": 6
+                    },
+                    "phone": "(572) 997-6136",
+                    "cell": "(260) 986-3146",
+                    "id": {
+                        "name": "SSN",
+                        "value": "337-66-8005"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/women/22.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/women/22.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/women/22.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Brad",
+                        "last": "Byrd"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 9890,
+                            "name": "Parker Rd"
+                        },
+                        "city": "Bridgeport",
+                        "state": "New Hampshire",
+                        "country": "United States",
+                        "postcode": 51039,
+                        "coordinates": {
+                            "latitude": "-76.4973",
+                            "longitude": "170.5749"
+                        },
+                        "timezone": {
+                            "offset": "+6:00",
+                            "description": "Almaty, Dhaka, Colombo"
+                        }
+                    },
+                    "email": "brad.byrd@example.com",
+                    "login": {
+                        "uuid": "34446f59-d9b3-4c83-aa4e-5f986e510095",
+                        "username": "blackfrog745",
+                        "password": "classic",
+                        "salt": "n9ywtXgY",
+                        "md5": "427f254d3f9e43c428afb167dfc2e494",
+                        "sha1": "5e9a28203ec6a32918beb18d3117b1e443113ae4",
+                        "sha256": "396e3cdeeb5a4e0d96c4cd743d84cba3c832ecfc276e5310a89659ecca069224"
+                    },
+                    "dob": {
+                        "date": "1993-04-02T06:51:11.909Z",
+                        "age": 31
+                    },
+                    "registered": {
+                        "date": "2016-02-19T16:22:41.802Z",
+                        "age": 8
+                    },
+                    "phone": "(407) 385-6967",
+                    "cell": "(731) 619-5202",
+                    "id": {
+                        "name": "SSN",
+                        "value": "033-42-2960"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/49.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/49.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/49.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Keith",
+                        "last": "Brooks"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 2994,
+                            "name": "Royal Ln"
+                        },
+                        "city": "San Jose",
+                        "state": "Alaska",
+                        "country": "United States",
+                        "postcode": 92953,
+                        "coordinates": {
+                            "latitude": "78.8251",
+                            "longitude": "-140.1103"
+                        },
+                        "timezone": {
+                            "offset": "+6:00",
+                            "description": "Almaty, Dhaka, Colombo"
+                        }
+                    },
+                    "email": "keith.brooks@example.com",
+                    "login": {
+                        "uuid": "e45f7981-87a5-4efc-875c-fd3d5c978dc3",
+                        "username": "redbear904",
+                        "password": "rubble",
+                        "salt": "272MV8Ch",
+                        "md5": "dda00b44a2c56b9021cd772e2d8a23ff",
+                        "sha1": "b1ff68be040b11eebb3c026c4b1a0c03c820424d",
+                        "sha256": "e862a001ce815e0f6db5cbd84cb06d0c4bff14addb883b1faf178853942caa70"
+                    },
+                    "dob": {
+                        "date": "1957-07-26T18:27:13.010Z",
+                        "age": 67
+                    },
+                    "registered": {
+                        "date": "2003-03-20T15:03:52.554Z",
+                        "age": 21
+                    },
+                    "phone": "(290) 940-9210",
+                    "cell": "(799) 618-3995",
+                    "id": {
+                        "name": "SSN",
+                        "value": "034-54-6539"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/80.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/80.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/80.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Pedro",
+                        "last": "Lambert"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 8990,
+                            "name": "Fincher Rd"
+                        },
+                        "city": "Lakeland",
+                        "state": "Tennessee",
+                        "country": "United States",
+                        "postcode": 75332,
+                        "coordinates": {
+                            "latitude": "-1.1100",
+                            "longitude": "106.7069"
+                        },
+                        "timezone": {
+                            "offset": "-8:00",
+                            "description": "Pacific Time (US & Canada)"
+                        }
+                    },
+                    "email": "pedro.lambert@example.com",
+                    "login": {
+                        "uuid": "4feba26b-1a0f-4da6-a6b5-5caad0187111",
+                        "username": "heavyswan315",
+                        "password": "sputnik",
+                        "salt": "3Qe1rveK",
+                        "md5": "1066ef4dafc57523ac527d04cf357db0",
+                        "sha1": "e4186b6db8f7f128454b44e8edf34ea322d99982",
+                        "sha256": "b70c049e83ef2541e2472d5445beab60766d1e0e22b69012c176e165ad66c9fb"
+                    },
+                    "dob": {
+                        "date": "1976-12-03T10:38:15.328Z",
+                        "age": 47
+                    },
+                    "registered": {
+                        "date": "2005-11-12T05:44:35.242Z",
+                        "age": 18
+                    },
+                    "phone": "(605) 560-6719",
+                    "cell": "(405) 274-4608",
+                    "id": {
+                        "name": "SSN",
+                        "value": "125-88-1951"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/94.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/94.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/94.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Bernard",
+                        "last": "Castillo"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 4178,
+                            "name": "W Dallas St"
+                        },
+                        "city": "Richardson",
+                        "state": "Maryland",
+                        "country": "United States",
+                        "postcode": 62179,
+                        "coordinates": {
+                            "latitude": "49.8166",
+                            "longitude": "176.0688"
+                        },
+                        "timezone": {
+                            "offset": "-2:00",
+                            "description": "Mid-Atlantic"
+                        }
+                    },
+                    "email": "bernard.castillo@example.com",
+                    "login": {
+                        "uuid": "91973f65-4c1d-4325-bdb7-50c2d9afaca5",
+                        "username": "purplesnake401",
+                        "password": "member",
+                        "salt": "YASMudJ0",
+                        "md5": "d64c8ceb10b22d5405df81c6c36ac854",
+                        "sha1": "b54dea98cbb4b99e3615582743afdc1b31a14bed",
+                        "sha256": "227ed4818c9cb0a0ba0f427720d97abafd2f5d84aa2389fa4a309a7d76d7ddaa"
+                    },
+                    "dob": {
+                        "date": "1953-09-24T22:26:35.533Z",
+                        "age": 70
+                    },
+                    "registered": {
+                        "date": "2021-08-21T04:25:43.947Z",
+                        "age": 2
+                    },
+                    "phone": "(607) 846-1185",
+                    "cell": "(306) 827-1182",
+                    "id": {
+                        "name": "SSN",
+                        "value": "440-41-8529"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/81.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/81.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/81.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Timmothy",
+                        "last": "Caldwell"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 8113,
+                            "name": "Lovers Ln"
+                        },
+                        "city": "Van Alstyne",
+                        "state": "Georgia",
+                        "country": "United States",
+                        "postcode": 36631,
+                        "coordinates": {
+                            "latitude": "-57.0138",
+                            "longitude": "10.0982"
+                        },
+                        "timezone": {
+                            "offset": "-3:30",
+                            "description": "Newfoundland"
+                        }
+                    },
+                    "email": "timmothy.caldwell@example.com",
+                    "login": {
+                        "uuid": "1f831304-4644-4fa0-a491-c4bc0edfd9cf",
+                        "username": "sadlion171",
+                        "password": "johnboy",
+                        "salt": "OM4dAPXP",
+                        "md5": "a84ef2251ff55a2e6a57b02b696d3015",
+                        "sha1": "37782ed3812c4f3265ad996b33f49da90a82d3c1",
+                        "sha256": "11553ea934cdd46b895aadc18e1427270ea4858793d3e3dbae4a97f6b7a7e8fb"
+                    },
+                    "dob": {
+                        "date": "1993-07-14T05:29:02.460Z",
+                        "age": 31
+                    },
+                    "registered": {
+                        "date": "2007-03-29T18:54:37.596Z",
+                        "age": 17
+                    },
+                    "phone": "(215) 846-1556",
+                    "cell": "(654) 467-7215",
+                    "id": {
+                        "name": "SSN",
+                        "value": "054-17-7136"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/15.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/15.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/15.jpg"
+                    },
+                    "nat": "US"
+                },
+                {
+                    "gender": "male",
+                    "name": {
+                        "title": "Mr",
+                        "first": "Glen",
+                        "last": "Hopkins"
+                    },
+                    "location": {
+                        "street": {
+                            "number": 9669,
+                            "name": "Stevens Creek Blvd"
+                        },
+                        "city": "Van Alstyne",
+                        "state": "Idaho",
+                        "country": "United States",
+                        "postcode": 13441,
+                        "coordinates": {
+                            "latitude": "-8.5241",
+                            "longitude": "-138.0073"
+                        },
+                        "timezone": {
+                            "offset": "-1:00",
+                            "description": "Azores, Cape Verde Islands"
+                        }
+                    },
+                    "email": "glen.hopkins@example.com",
+                    "login": {
+                        "uuid": "ca0e30c1-e0f7-40f4-91ae-e91d4ff91568",
+                        "username": "bluebutterfly510",
+                        "password": "jets",
+                        "salt": "qxGnpXyP",
+                        "md5": "e1b31631a9e5154a29aba99e7fe6610b",
+                        "sha1": "6e77a09d9ead6ced33a76a65547771cddc4fad1d",
+                        "sha256": "b54cc196c9d5448987d6840276a87a28e5a2c9c055ed433880c0a11abf2b5367"
+                    },
+                    "dob": {
+                        "date": "1963-12-02T02:30:39.333Z",
+                        "age": 60
+                    },
+                    "registered": {
+                        "date": "2005-08-06T12:59:58.381Z",
+                        "age": 19
+                    },
+                    "phone": "(829) 302-0245",
+                    "cell": "(925) 696-0026",
+                    "id": {
+                        "name": "SSN",
+                        "value": "164-24-8103"
+                    },
+                    "picture": {
+                        "large": "https://randomuser.me/api/portraits/men/56.jpg",
+                        "medium": "https://randomuser.me/api/portraits/med/men/56.jpg",
+                        "thumbnail": "https://randomuser.me/api/portraits/thumb/men/56.jpg"
+                    },
+                    "nat": "US"
+                }
+            ],
+            "info": {
+                "seed": "f49e9ea0f6ee635a",
+                "results": 10,
+                "page": 1,
+                "version": "1.4"
+            }
+        }
+     */
+
+</script>
+</body>
+</html>
