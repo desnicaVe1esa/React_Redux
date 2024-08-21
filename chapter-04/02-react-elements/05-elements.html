@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>React Elements</title>
+</head>
+<body>
+
+<!-- Целевой контейнер -->
+<div id="react-container"></div>
+
+<!-- Библиотека React и React DOM -->
+<script src="https://unpkg.com/react@16/umd/react.development.js"></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+
+<script>
+
+    const items = [
+        "1 lb Salmon",
+        "1 cup Pine Nuts",
+        "2 cups Butter Lettuce",
+        "1 Yellow Squash",
+        "1/2 cup Olive Oil",
+        "3 cloves of Garlic"
+    ]
+
+    const ingredients = React.createElement(
+        "ul",
+        { className: "ingredients" },
+        items.map((ingredient, i) =>
+            React.createElement("li", { key: i }, ingredient) // Исправление ошибки из 04-elements.html
+        )
+    )
+
+    ReactDOM.render(
+        ingredients,
+        document.getElementById('react-container')
+    )
+
+    console.log('ingredients', ingredients) /*
+                                                {
+                                                    "type": "ul",
+                                                    "key": null,
+                                                    "ref": null,
+                                                    "props": {
+                                                        "className": "ingredients",
+                                                        "children": [
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "1 lb Salmon"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            },
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "1 cup Pine Nuts"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            },
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "2 cups Butter Lettuce"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            },
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "1 Yellow Squash"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            },
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "1/2 cup Olive Oil"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            },
+                                                            {
+                                                                "type": "li",
+                                                                "key": null,
+                                                                "ref": null,
+                                                                "props": {
+                                                                    "children": "3 cloves of Garlic"
+                                                                },
+                                                                "_owner": null,
+                                                                "_store": {}
+                                                            }
+                                                        ]
+                                                    },
+                                                    "_owner": null,
+                                                    "_store": {}
+                                                }
+                                             */
+
+
+</script>
+
+</body>
+</html>
