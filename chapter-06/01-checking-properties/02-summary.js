@@ -1,6 +1,7 @@
 import React from "react";
+import {createClass, PropTypes}  from "react";
 
-const Summary = React.createClass({
+const Summary = createClass({
     displayName: "Summary",
     propTypes: { // Ниже приведены средства проверки типов
       ingredients: PropTypes.array,

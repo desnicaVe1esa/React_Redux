@@ -1,6 +1,7 @@
 import React from "react";
+import {createClass}  from "react";
 
-const Summary = React.createClass({
+const Summary = createClass({
     displayName: "Summary",
     render() {
         const {ingredients, steps, title} = this.props /*
