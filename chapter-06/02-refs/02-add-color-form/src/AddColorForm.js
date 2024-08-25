@@ -10,6 +10,7 @@ class AddColorForm extends React.Component {
         const {_title, _color} = this.refs;
         e.preventDefault();
         alert(`New color: ${_title.value} ${_color.value}`);
+        // После нажатия "Ок" во всплывшем окне устанавливает параметры по умолчанию(указаны ниже)
         _title.value = '';
         _color.value = '#000000';
         _title.focus();
