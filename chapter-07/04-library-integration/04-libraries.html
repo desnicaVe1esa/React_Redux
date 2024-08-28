@@ -60,18 +60,23 @@
             {children}
         </svg>
 
+    // НАстройка элементов group и позиционирование их на оси X
     const TimelineDot = ({position, txt}) =>
         <g transform={`translate(${position},0)`}>
             <circle cy={160} r={5} style={{fill: 'blue'}}/>
             <text y={115} x={-95} transform="rotate(-45)" style={{fontSize: '10px'}}>{txt}</text>
         </g>
 
+    // Реструктурированный компонент
     class Timeline extends Component {
 
         constructor({data = []}) {
+            // Значения для самого раннего и позднего периода
             const times = d3.extent(data.map(d => d.year))
+            // Диапазон для шкалы времени в пикселах
             const range = [50, 750]
             super({data})
+            // Визуализация для получения позиции x для каждой даты, попадающей в заданный промежуток
             this.scale = d3.time.scale().domain(times).range(range)
             this.state = {data, times, range}
         }

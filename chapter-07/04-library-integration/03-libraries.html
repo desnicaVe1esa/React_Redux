@@ -25,6 +25,11 @@
         }
 
         prepState({data = [], min = 100, max = 700}) {
+            /*
+                d3 - Data Driven Documents. JS - фреймворк, которым можно воспользоваться, чтобы создать визуализацию
+                данных для браузера. Представлен широкий набор инструментов, позволяющих масштабировать и
+                интерполировать (процесс преобразования прошедших лет в соответствующие им пиксельные значения) данные
+             */
             const times = d3.extent(data.map(event => event.Date))
             const range = [min, max]
             return {data, times, range}
@@ -38,23 +43,32 @@
 
             target.innerHTML = ''
 
+            // Создание svg элемента и добавление к основной ссылке
             d3.select(target)
+                // Scalable Vector Graphics - язык разметки масштабируемой векторной графики
                 .append('svg')
                 .attr('height', 200)
                 .attr('width', range[1] + 100)
 
+            /*
+                Выбирает элемент svg, являющийся первым дочерним элементом ниже цели и добавляет элемент group для
+                каждой точки данных нашего массива шкалы времени
+             */
             group = d3.select(target.children[0])
                 .selectAll('g')
                 .data(data)
                 .enter()
                 .append('g')
+                // Позиционирование путем преобразования значения по оси X с помощью функции scale
                 .attr('transform', (d, i) => 'translate(' + scale(d.Date) + ', 0)')
 
+            // Добавление кружочка circle и никоторый "стиль".
             group.append('circle')
                 .attr('cy', 160)
                 .attr('r', 5)
                 .style('fill', 'blue')
 
+            // Текст, стиль и поворот текста
             group.append('text')
                 .text(d => d.Date + " - " + d["Event Title"])
                 .style('font-size', 10)
