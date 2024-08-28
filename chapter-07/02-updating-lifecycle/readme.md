@@ -1,1 +1,1 @@
-![02-updating-lifecycle.jpg](02-updating-lifecycle.jpg)
+![updating-lifecycle.jpg](updating-lifecycle.jpg)
