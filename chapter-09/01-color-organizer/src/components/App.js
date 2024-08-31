@@ -8,7 +8,7 @@ export default class App extends Component {
 
     constructor(props) {
         super(props)
-        // Приложение хранит состояние в оном объекте в одном и том же месте
+        // Приложение хранит состояние в одном объекте в одном и том же месте
         this.state = {
             colors: [
                 {
