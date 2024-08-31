@@ -123,14 +123,207 @@
 
 
     const populate = compose(
-        () => console.log('color coung', store.getState().colors.length),
+        () => console.log('color count', store.getState().colors.length),
         () => store.dispatch(addColor("Big Blue", "#0000FF")),
         () => store.dispatch(addColor("Tomato", "#990000")),
         () => store.dispatch(addColor("lawn", "#009900")),
         () => store.dispatch(addColor("Party Pink", "#F142FF"))
     )
 
-    populate()
+    populate() /*
+                    dispatching ADD_COLOR
+                    prev state {
+                                    "colors": [],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+                    action  {
+                                "type": "ADD_COLOR",
+                                "id": "49c4648c-dc5b-417d-9c08-754fb5367ddc",
+                                "title": "Party Pink",
+                                "color": "#F142FF",
+                                "timestamp": "Sat Aug 31 2024 10:01:15 GMT+0300 (Москва, стандартное время)"
+                            }
+                   next state   {
+                                    "colors": [
+                                        {
+                                            "id": "45fb43e5-67d7-4704-aa8f-26f3db03612b",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:08:25 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+
+
+                    dispatching ADD_COLOR
+                    prev state  {
+                                    "colors": [
+                                        {
+                                            "id": "d3dea5f0-34c0-4cc6-adff-1970d35097f6",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:03:52 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+                    action  {
+                                "type": "ADD_COLOR",
+                                "id": "5aa47698-ad59-473e-90b1-8e221ce84d3f",
+                                "title": "lawn",
+                                "color": "#009900",
+                                "timestamp": "Sat Aug 31 2024 10:04:22 GMT+0300 (Москва, стандартное время)"
+                            }
+                   next state   {
+                                    "colors": [
+                                        {
+                                            "id": "cdb34615-537f-45e8-9a3f-df45215a9df5",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:09:23 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "de08fc45-3d0d-420e-ad05-c1836cdba428",
+                                            "title": "lawn",
+                                            "color": "#009900",
+                                            "timestamp": "Sat Aug 31 2024 10:09:23 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+
+
+                    dispatching ADD_COLOR
+                    prev state  {
+                                    "colors": [
+                                        {
+                                            "id": "0e3a4080-08d9-44b5-8aa0-10ff52576775",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:05:10 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "d9a4b2a8-b22a-4258-8243-24222d941b8c",
+                                            "title": "lawn",
+                                            "color": "#009900",
+                                            "timestamp": "Sat Aug 31 2024 10:05:10 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+                    action  {
+                                "type": "ADD_COLOR",
+                                "id": "9294c80f-93f1-4591-b9a1-f9d891691135",
+                                "title": "Tomato",
+                                "color": "#990000",
+                                "timestamp": "Sat Aug 31 2024 10:05:37 GMT+0300 (Москва, стандартное время)"
+                            }
+                   next state   {
+                                    "colors": [
+                                        {
+                                            "id": "320752e6-0dda-4ead-9210-7dfcb42e1334",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:10:00 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "d0d40944-fdf1-4f0d-a775-a150de94e86f",
+                                            "title": "lawn",
+                                            "color": "#009900",
+                                            "timestamp": "Sat Aug 31 2024 10:10:00 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "63fa9d57-7e52-4c2a-9a12-5ef241e4b91e",
+                                            "title": "Tomato",
+                                            "color": "#990000",
+                                            "timestamp": "Sat Aug 31 2024 10:10:00 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+
+
+                    dispatching ADD_COLOR
+                    prev state  {
+                                    "colors": [
+                                        {
+                                            "id": "045a593d-ba2a-464e-970a-7925620c9eba",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:06:10 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "1a1a3d6f-11f9-4ecd-b8a0-804e45197076",
+                                            "title": "lawn",
+                                            "color": "#009900",
+                                            "timestamp": "Sat Aug 31 2024 10:06:10 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "7d47c085-ddc9-4e0d-a277-5de495177950",
+                                            "title": "Tomato",
+                                            "color": "#990000",
+                                            "timestamp": "Sat Aug 31 2024 10:06:10 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+                    action  {
+                                "type": "ADD_COLOR",
+                                "id": "115b2749-19c6-4bdb-a9b7-b5b2aecc99ae",
+                                "title": "Big Blue",
+                                "color": "#0000FF",
+                                "timestamp": "Sat Aug 31 2024 10:06:45 GMT+0300 (Москва, стандартное время)"
+                            }
+                    next state   {
+                                    "colors": [
+                                        {
+                                            "id": "00c5dfea-7cff-494f-a4ac-4cf4923970c9",
+                                            "title": "Party Pink",
+                                            "color": "#F142FF",
+                                            "timestamp": "Sat Aug 31 2024 10:10:28 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "533e6591-782d-4be3-afad-e7fdef8fea25",
+                                            "title": "lawn",
+                                            "color": "#009900",
+                                            "timestamp": "Sat Aug 31 2024 10:10:28 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "f00f9734-dd25-4457-8bad-d9430d15ee24",
+                                            "title": "Tomato",
+                                            "color": "#990000",
+                                            "timestamp": "Sat Aug 31 2024 10:10:28 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        },
+                                        {
+                                            "id": "f14faa89-732b-4f19-b033-fc0ffbdd00ce",
+                                            "title": "Big Blue",
+                                            "color": "#0000FF",
+                                            "timestamp": "Sat Aug 31 2024 10:10:28 GMT+0300 (Москва, стандартное время)",
+                                            "rating": 0
+                                        }
+                                    ],
+                                    "sort": "SORTED_BY_DATE"
+                                }
+
+
+                    color count 4
+                */
 
 
 </script>
