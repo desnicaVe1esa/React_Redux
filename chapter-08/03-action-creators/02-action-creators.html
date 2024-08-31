@@ -108,6 +108,7 @@
                     sortBy: "SORTED_BY_DATE"
                 })
 
+    // compose - используется для составления нескольких функций в одну. Выполнение происходит справа налево или снизу вверх
     const populate = compose(
         () => store.dispatch(addColor("Big Blue", "#0000FF")),
         () => store.dispatch(addColor("Tomato", "#990000")),
@@ -115,7 +116,6 @@
         () => store.dispatch(addColor("Party Pink", "#F142FF"))
     )
 
-    // compose - используется для составления нескольких функций в одну. Выполнение происходит справа налево или снизу вверх
     const print = compose(
         list => console.log(list),
         titles => titles.join(", "),
