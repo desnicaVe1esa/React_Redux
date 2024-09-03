@@ -1,30 +1,52 @@
-import {createStore, combineReducers, applyMiddleware} from 'redux'
-import {colors, sort} from './reducers'
-import stateData from '../../data/initialState'
+import C from '../constants'
 
-const logger = store => next => action => {
-    let result
-    console.groupCollapsed("dispatching", action.type)
-    console.log('prev state', store.getState())
-    console.log('action', action)
-    result = next(action)
-    console.log('next state', store.getState())
-    console.groupEnd()
-    return result
+export const color = (state = {}, action={ type: null }) => {
+    switch (action.type) {
+        case C.ADD_COLOR:
+            return {
+                id: action.id,
+                title: action.title,
+                color: action.color,
+                timestamp: action.timestamp,
+                rating: 0
+            }
+        case C.RATE_COLOR:
+            return (state.id !== action.id) ?
+                state :
+                {
+                    ...state,
+                    rating: action.rating
+                }
+        default :
+            return state
+    }
 }
 
-const saver = store => next => action => {
-    let result = next(action)
-    localStorage['redux-store'] = JSON.stringify(store.getState())
-    return result
+export const colors = (state = [], action={ type: null }) => {
+    switch (action.type) {
+        case C.ADD_COLOR :
+            return [
+                ...state,
+                color({}, action)
+            ]
+        case C.RATE_COLOR :
+            return state.map(
+                c => color(c, action)
+            )
+        case C.REMOVE_COLOR :
+            return state.filter(
+                c => c.id !== action.id
+            )
+        default:
+            return state
+    }
 }
 
-const storeFactory = (initialState = stateData) =>
-    applyMiddleware(logger, saver)(createStore)(
-        combineReducers({colors, sort}),
-        (localStorage['redux-store']) ?
-            JSON.parse(localStorage['redux-store']) :
-            stateData
-    )
-
-export default storeFactory
+export const sort = (state="SORTED_BY_DATE", action={ type: null }) => {
+    switch (action.type) {
+        case "SORT_COLORS":
+            return action.sortBy
+        default :
+            return state
+    }
+}
