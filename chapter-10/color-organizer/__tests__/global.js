@@ -1,6 +1,10 @@
 import React from 'react'
 import deepFreeze from 'deep-freeze'
-import Enzyme from 'enzyme'
+import Enzyme from 'enzyme' /*
+                                Enzyme - утилита, которая выполяет задачу отображения компонентов React на экране
+                                для тестирования и предоставляет инструменты, необходимые для обходы дочерних элементов,
+                                проверки свойств и состояния, имитации событий и отправки запросов к DOM
+                             */
 import Adapter from 'enzyme-adapter-react-16'
 
 Enzyme.configure({ adapter: new Adapter() })
