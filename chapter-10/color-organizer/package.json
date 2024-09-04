@@ -4,7 +4,7 @@
   "description": "A sample React application",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint .", // Сценарий ля запуска lint-проверки
+    "lint": "eslint .", // Сценарий ля запуска lint-проверки(качество кода)
     "build": "webpack --progress",
     "prestart": "npm run build",
     "start": "httpster -d ./dist/ -p 3000",
@@ -61,11 +61,19 @@
     "redux": "3.7.2",
     "uuid": "3.1.0"
   },
+  // активизация Jest-среды
   "jest": {
+    /*
+      setupFiles используется для предоставления массива файлов, которык среда Jest должна запускать для установки
+      глобальной среды перед активизацией наших тестов
+    */
     "setupFiles": [
       "./__tests__/shim.js",
       "./__tests__/global.js"
     ],
+    /*
+      modulePathIgnorePatterns заставляет Jest проигнорировать при запуске тестов массива файлов
+    */
     "modulePathIgnorePatterns": [
       "shim.js",
       "global.js"
@@ -84,6 +92,7 @@
         "statements": 0
       }
     },
+    // Игнорирование импорта .css, .scss, .less, так как они мешают успешному прохождению тестов
     "moduleNameMapper": {
       "\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"
     }
