@@ -71,19 +71,22 @@
       "./__tests__/shim.js",
       "./__tests__/global.js"
     ],
-    /*
-      modulePathIgnorePatterns заставляет Jest проигнорировать при запуске тестов массива файлов
-    */
+    // modulePathIgnorePatterns заставляет Jest проигнорировать при запуске тестов массива файлов
     "modulePathIgnorePatterns": [
       "shim.js",
       "global.js"
     ],
+    // verbose - необходимость вывода подробного отчета о каждом тесте при каждом запуске среды jest
     "verbose": true,
+    // collectCoverage - Будут ли собираться данные об охвате при каждом запуске команды jest для этого проекта
     "collectCoverage": true,
+    // notify - Включает вывод окна уведомления с использованием текущей ОС
     "notify": true,
+    // collectCoverageFrom - Какие файлы должны быть охвачены тестированием
     "collectCoverageFrom": [
       "src/**"
     ],
+    // coverageThreshold - Выбор показателей охвата для тестирования в %
     "coverageThreshold": {
       "global": {
         "branches": 0,
@@ -92,7 +95,8 @@
         "statements": 0
       }
     },
-    // Игнорирование импорта .css, .scss, .less, так как они мешают успешному прохождению тестов
+
+    // moduleNameMapper - Игнорирование импорта .css, .scss, .less, так как они мешают успешному прохождению тестов
     "moduleNameMapper": {
       "\\.(scss)$": "<rootDir>/node_modules/jest-css-modules"
     }
