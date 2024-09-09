@@ -17,6 +17,10 @@ export const NewColor = connect(
         })
 )(AddColorForm)
 
+/*
+   Удален компонент Menu. Вместо этого инструкции по сортировке будут приходить в качестве параметра маршрута, п
+   ередаваемого в Color внутри свойства match
+*/
 export const Colors = connect(
     ({colors}, {match}) =>
         ({

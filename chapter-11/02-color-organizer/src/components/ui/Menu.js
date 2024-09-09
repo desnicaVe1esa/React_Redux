@@ -4,6 +4,7 @@ import '../../stylesheets/Menu.scss'
 
 const selectedStyle = { color: 'red' }
 
+// Визуальное состояние меню будет управляться selectedStyle из NavLink
 const Menu = ({ match }) =>
     <nav className="menu">
         <NavLink to="/" style={match.isExact && selectedStyle}>date</NavLink>

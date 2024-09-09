@@ -23,7 +23,7 @@ const saver = store => next => action => {
 
 const storeFactory = (initialState=stateData) =>
     applyMiddleware(logger, saver)(createStore)(
-        combineReducers({colors}),
+        combineReducers({colors}), // Удалено sort - Redux больше не будет обрабатывать переменную состояния
         (localStorage['redux-store']) ?
             JSON.parse(localStorage['redux-store']) :
             initialState
