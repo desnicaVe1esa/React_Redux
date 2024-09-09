@@ -4,6 +4,7 @@ import { Link, Route } from 'react-router-dom' /*
 import { MainMenu, AboutMenu } from './menus'
 import './stylesheets/pages.scss'
 
+// Многократно используемый компонент
 const PageTemplate = ({children}) =>
     <div className="page">
         <MainMenu />
