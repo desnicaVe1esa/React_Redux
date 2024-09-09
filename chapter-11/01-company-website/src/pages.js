@@ -64,6 +64,7 @@ export const About = ({ match }) =>
         </section>
     </PageTemplate>
 
+// Один из компонентов-заместителей. Используется для заглушки новых разделов
 export const Services = () =>
     <section className="services">
         <h2>Our Services</h2>

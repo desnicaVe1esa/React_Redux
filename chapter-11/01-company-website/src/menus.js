@@ -23,11 +23,14 @@ export const MainMenu = () =>
         <NavLink to="/contact" activeStyle={selectedStyle}>[Contact Us]</NavLink>
     </nav>
 
-export const AboutMenu = ({ match }) =>
+// Направление пользователь на внутреннее содержимое
+export const AboutMenu = ({ match }) => // match - свойство маршрутиризации
     <div className="about-menu">
         <li>
             <NavLink to="/about"
-                  style={match.isExact && selectedStyle}>
+                  style={match.isExact && selectedStyle}> {/* match.isExact === true, когда местоположение соответсвует
+                                                              маршруту /about, false - /about/service
+                                                            */}
                 [Company]
             </NavLink>
         </li>

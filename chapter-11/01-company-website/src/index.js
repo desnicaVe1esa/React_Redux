@@ -27,6 +27,7 @@ render(
     <div className="main">
       <Switch>
         <Route exact path="/" component={Home} />
+        {/* Redirect - используется, когда возникает потребность перенаправить пользователя с одного маршрута на другой */}
         <Redirect from="/history" to="/about/history" />
         <Redirect from="/services" to="/about/services" />
         <Redirect from="/location" to="/about/location" />
