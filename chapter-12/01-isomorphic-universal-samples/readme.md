@@ -18,7 +18,7 @@ This code works in browser and in with node js
 This code works in a browser and with node js. You can see the
 [demo](http://rawgit.com/MoonHighway/learning-react/master/chapter-12/isomorphic-universal-samples/load-and-print.html)
 of this script working in the browser. You can run the script with node js in the command line:
-`node isomorphic-load-and-print.js`.
+`node 02-isomorphic-load-and-print.js`.
 
 ```javascript
 
