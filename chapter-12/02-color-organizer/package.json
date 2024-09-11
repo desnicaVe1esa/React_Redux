@@ -51,7 +51,10 @@
     "react-router-dom": "4.2.2",
     "body-parser": "1.18.2",
     "express": "4.15.5",
-    "ignore-styles": "5.0.1",
+    "ignore-styles": "5.0.1", /*
+                                 ignore-styles - библиотека игнорирования импортируемых scss-инструкций.
+                                 Node.js не знает как обращаться с импортом .css и изображениями
+                               */
     "isomorphic-fetch": "2.2.1"
   }
 }

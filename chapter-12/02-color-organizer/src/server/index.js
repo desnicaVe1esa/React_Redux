@@ -2,6 +2,8 @@ import React from 'react'
 import ignoreStyles from 'ignore-styles'
 import app from './app'
 
+// Точка входа для приложения
+
 global.React = React
 
 app.set('port', process.env.PORT || 3000)

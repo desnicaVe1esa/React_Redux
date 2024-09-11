@@ -1,4 +1,8 @@
-import express from 'express'
+import express from 'express' /*
+                                Express.js — это минималистичный и гибкий веб-фреймворк для Node.js, который облегчает
+                                разработку веб-приложений и API. Он предоставляет простой интерфейс и набор функций,
+                                позволяющих быстро создавать серверы и маршрутизировать запросы
+                               */
 import path from 'path'
 import bodyParser from 'body-parser'
 import fs from 'fs'
