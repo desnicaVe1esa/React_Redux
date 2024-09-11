@@ -1,6 +1,16 @@
 import { createStore, combineReducers, applyMiddleware } from 'redux'
 import { colors } from './reducers'
-import thunk from 'redux-thunk'
+import thunk from 'redux-thunk' /*
+                                    thunk - это промежуточное программное обеспечение для Redux. Оно позволяет писать
+                                    создатели действий, которые возвращают функцию вместо объекта. Эта функция принимает
+                                    в качестве аргументов метод dispatch хранилища и функцию getState. Она может отправлять
+                                    несколько действий, выполнять асинхронные операции и получать доступ к текущему состоянию,
+                                    если это необходимо перед отправкой действия
+                                    Основная цель Redux-Thunk — обработка асинхронных действий в Redux. С его помощью приложение
+                                    может плавно управлять как синхронными, так и асинхронными операциями
+                                    Обычно Redux-Thunk используют для асинхронных запросов к внешней API, для получения
+                                    или сохранения данных
+                                 */
 
 const clientLogger = store => next => action => {
     if (action.type) {
@@ -29,6 +39,7 @@ const middleware = server => [
     thunk
 ]
 
+// Изоморфный storeFactory
 const storeFactory = (server = false, initialState = {}) =>
     applyMiddleware(...middleware(server))(createStore)(
         combineReducers({colors}),

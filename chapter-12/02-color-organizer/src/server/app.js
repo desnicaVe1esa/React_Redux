@@ -5,7 +5,7 @@ import express from 'express' /*
                                */
 import path from 'path'
 import bodyParser from 'body-parser'
-import fs from 'fs'
+import fs from 'fs' // fs - используется для сохранения нового состояни в указаном файле
 import { Provider } from 'react-redux'
 import { compose } from 'redux'
 import { StaticRouter } from 'react-router-dom'
@@ -18,8 +18,10 @@ import initialState from '../../data/initialState.json'
 const staticCSS = fs.readFileSync(path.join(__dirname, '../../dist/assets/bundle.css'))
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets'))
 
+// Экземпляр хранилища, который запускается на сервере
 const serverStore = storeFactory(true, initialState)
 
+// subscribe - отслеживает изменения состояния и сохраняет новый JSON-файл при каждом изменении
 serverStore.subscribe(() =>
     fs.writeFile(
         path.join(__dirname, '../../data/initialState.json'),
@@ -81,6 +83,10 @@ const logger = (req, res, next) => {
     next()
 }
 
+/*
+  Связующий код, который добавляет серверное хранилище  к конвейеру запросов, чтобы его можно было использовать
+  в ходе запроса другому связующему коду
+ */
 const addStoreToRequestPipeline = (req, res, next) => {
     req.store = serverStore
     next()
