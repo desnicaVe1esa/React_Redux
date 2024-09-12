@@ -34,6 +34,7 @@ const serverLogger = store => next => action => {
     return next(action)
 }
 
+// Возвращает связующий код, который должен быть встроен в новое хранилище в единый массив
 const middleware = server => [
     (server) ? serverLogger : clientLogger,
     thunk

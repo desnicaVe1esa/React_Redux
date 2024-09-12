@@ -4,12 +4,14 @@ const parseResponse = response => response.json()
 
 const logError = error => console.error(error)
 
+// thunk-функция
 const fetchThenDispatch = (dispatch, url, method, body) =>
     fetch(url, {method, body, headers: { 'Content-Type': 'application/json' }})
         .then(parseResponse)
         .then(dispatch)
         .catch(logError)
 
+// thunk-версия
 export const addColor = (title, color) => dispatch =>
     fetchThenDispatch(
         dispatch,
@@ -25,6 +27,7 @@ export const removeColor = id => dispatch =>
         'DELETE'
     )
 
+// thunk-версия
 export const rateColor = (id, rating) => dispatch =>
     fetchThenDispatch(
         dispatch,
