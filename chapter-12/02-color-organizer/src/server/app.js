@@ -8,14 +8,19 @@ import bodyParser from 'body-parser'
 import fs from 'fs' // fs - используется для сохранения нового состояни в указаном файле
 import { Provider } from 'react-redux'
 import { compose } from 'redux'
-import { StaticRouter } from 'react-router-dom'
+import { StaticRouter } from 'react-router-dom' // StaticRouter используется при необходимости отобразить дерево компонентов на строку
 import { renderToString } from 'react-dom/server' // renderToString - отображает дерево React в строку HTMLF
 import api from './color-api'
 import App from '../components/App'
 import storeFactory from '../store'
 import initialState from '../../data/initialState.json'
 
-const staticCSS = fs.readFileSync(path.join(__dirname, '../../dist/assets/bundle.css'))
+const staticCSS = fs.readFileSync(path.join(__dirname, '../../dist/assets/bundle.css')) /*
+                                                                                            При запуске приложения код CSS
+                                                                                            сохраняется в виде строки с глобальной
+                                                                                            доступностью. staticCSS - контейнер для
+                                                                                            содержимого этой строки
+                                                                                         */
 const fileAssets = express.static(path.join(__dirname, '../../dist/assets'))
 
 // Экземпляр хранилища, который запускается на сервере
@@ -68,9 +73,9 @@ const makeClientStoreFrom = store => url =>
     })
 
 const htmlResponse = compose(
-    buildHTMLPage,
-    renderComponentsToHTML,
-    makeClientStoreFrom(serverStore)
+    buildHTMLPage, // Шаг 3 - создается HTML-страница, которая будет отправлена клиенту
+    renderComponentsToHTML, // Шаг 2 - отображается дерево компонентов в виде кода HTML, используя StaticRouter
+    makeClientStoreFrom(serverStore) // Шаг 1 - создается хранилище, запускаемое на стороне клиента с помощью данных из serverStore
 )
 
 const respond = ({url}, res) =>

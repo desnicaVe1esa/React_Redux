@@ -14,6 +14,7 @@ console.log('rendered from here...')
 
 hydrate(
     <Provider store={store}>
+        {/* Для применения изоморфного режима заменили HashRouter на BrowserRouter */}
         <BrowserRouter>
           <App />
         </BrowserRouter>

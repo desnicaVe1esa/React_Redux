@@ -1,5 +1,8 @@
 var webpack = require("webpack")
-var ExtractTextPlugin = require("extract-text-webpack-plugin")
+var ExtractTextPlugin = require("extract-text-webpack-plugin") /*
+                                                                  ExtractTextPlugin - пакет для добавления стилей в ответ.
+                                                                  Это делается на случай, если у клиента отключен JavaScript в браузере
+                                                                */
 var OptimizeCssAssetsPlugin = require("optimize-css-assets-webpack-plugin")
 var path = require("path")
 
