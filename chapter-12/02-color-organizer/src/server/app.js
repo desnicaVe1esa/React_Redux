@@ -4,7 +4,10 @@ import express from 'express' /*
                                 позволяющих быстро создавать серверы и маршрутизировать запросы
                                */
 import path from 'path'
-import bodyParser from 'body-parser'
+import bodyParser from 'body-parser' /*
+                                        bodyParser - используется для парсинга тел поступающих запросов и получения всех
+                                        переменных, отправленных маршрутам
+                                      */
 import fs from 'fs' // fs - используется для сохранения нового состояни в указаном файле
 import { Provider } from 'react-redux'
 import { compose } from 'redux'
